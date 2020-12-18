@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlSync", "XmlSync\XmlSync.csproj", "{AD5B130A-BF00-4EE7-AEB4-1BB35231DADD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD5B130A-BF00-4EE7-AEB4-1BB35231DADD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD5B130A-BF00-4EE7-AEB4-1BB35231DADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD5B130A-BF00-4EE7-AEB4-1BB35231DADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD5B130A-BF00-4EE7-AEB4-1BB35231DADD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {184ED42B-7C04-4F9B-9B14-7AC0E211537F}
+	EndGlobalSection
+EndGlobal
