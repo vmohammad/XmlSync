@@ -19,4 +19,39 @@ namespace XmlSync
         public int SecondID { get; set; }
         public string SecondText { get; set; }
     }
+    public class Files
+    {
+        public int fileID { get; set; }
+        public string fileName { get; set; }
+        public string filePath { get; set; }
+    }
+    public class Languages : Files
+    {
+        public Languages()
+        {
+            isList = false;
+        }
+        public int lanID { get; set; }
+        public string lanLabel { get; set; }
+        //public List<XmlLanguageModel> LanguageModel { get; set; }
+        private List<XmlLanguageModel> LanguageModel;
+        private bool isList { get; set; }
+        private void CreateLanguageModel()
+        {
+            if (!isList)
+            {
+                LanguageModel = new List<XmlLanguageModel>();
+                isList = true;
+            }
+        }
+        public void InsertModel(XmlLanguageModel xmlLanguageModel)
+        {
+            CreateLanguageModel();
+            LanguageModel.Add(xmlLanguageModel);
+        }
+        public List<XmlLanguageModel> GetModel()
+        {
+            return LanguageModel;
+        }
+    }
 }

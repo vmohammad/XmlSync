@@ -60,141 +60,143 @@ namespace XmlSync
             InitializeComponent();
         }
         List<XmlLanguageViewModel> xlvm = new List<XmlLanguageViewModel>();
+        List<XmlLanguageModel> xlms = new List<XmlLanguageModel>();
+        List<Languages> lans = new List<Languages>();
         string fileNameMain = "";
         string fileNameSec = "";
         private void ButtonReadFile_Click(object sender, RoutedEventArgs e)
         {
-            List<XmlLanguageModel> IxmlGlobal = new List<XmlLanguageModel>();
-            List<XmlLanguageModel> IxmlSecond = new List<XmlLanguageModel>();
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == true)
-            {
-                {
-                    XmlDocument xmlDoc = new XmlDocument();
-                    xmlDoc.Load(openFileDialog.FileName);
-                    fileNameMain = openFileDialog.FileName;
-                    var cultureMain = xmlDoc.DocumentElement.SelectNodes("/localizationDictionary")[0].Attributes.GetNamedItem("culture").InnerText;
-                    txtMain.Text = cultureMain.ToString();
-                    XmlNodeList nodeList = xmlDoc.DocumentElement.SelectNodes("/localizationDictionary/texts/text");
-                    int i = 0;
-                    foreach (XmlNode node in nodeList)
-                    {
-                        XmlLanguageModel xlm = new XmlLanguageModel();
-                        xlm.ID = i;
-                        xlm.Name = node.Attributes.GetNamedItem("name").InnerText;
-                        xlm.Text = node.InnerText;
-                        IxmlGlobal.Add(xlm);
-                    }
-                }
-                OpenFileDialog openFileDialog1 = new OpenFileDialog();
-                if (openFileDialog1.ShowDialog() == true)
-                {
-                    XmlDocument xmlDoc1 = new XmlDocument();
-                    xmlDoc1.Load(openFileDialog1.FileName);
-                    fileNameSec = openFileDialog1.FileName;
-                    var cultureSec = xmlDoc1.DocumentElement.SelectNodes("/localizationDictionary")[0].Attributes.GetNamedItem("culture").InnerText;
-                    txtSecond.Text = cultureSec.ToString();
-                    XmlNodeList nodeList1 = xmlDoc1.DocumentElement.SelectNodes("/localizationDictionary/texts/text");
-                    /*xmlGlobal = new XmlLanguageModel[nodeList.Count]0;*/
-                    int i1 = 0;
-                    foreach (XmlNode node in nodeList1)
-                    {
-                        XmlLanguageModel xlm = new XmlLanguageModel();
-                        xlm.ID = i1;
-                        xlm.Name = node.Attributes.GetNamedItem("name").InnerText;
-                        xlm.Text = node.InnerText;
-                        IxmlSecond.Add(xlm);
-                    }
-                }
-                List<XmlLanguageModel> SortedGlobal = IxmlGlobal.OrderBy(o => o.Name).ToList();
-                List<XmlLanguageModel> SortedSecond = IxmlSecond.OrderBy(o => o.Name).ToList();
-                List<XmlLanguageModel> DoseNotInGlobal = new List<XmlLanguageModel>();
-                List<XmlLanguageModel> DoseNotInSecend = new List<XmlLanguageModel>();
-                List<XmlLanguageModel> Repeated = new List<XmlLanguageModel>();
+            //List<XmlLanguageModel> IxmlGlobal = new List<XmlLanguageModel>();
+            //List<XmlLanguageModel> IxmlSecond = new List<XmlLanguageModel>();
+            //OpenFileDialog openFileDialog = new OpenFileDialog();
+            //if (openFileDialog.ShowDialog() == true)
+            //{
+            //    {
+            //        XmlDocument xmlDoc = new XmlDocument();
+            //        xmlDoc.Load(openFileDialog.FileName);
+            //        fileNameMain = openFileDialog.FileName;
+            //        var cultureMain = xmlDoc.DocumentElement.SelectNodes("/localizationDictionary")[0].Attributes.GetNamedItem("culture").InnerText;
+            //        txtMain.Text = cultureMain.ToString();
+            //        XmlNodeList nodeList = xmlDoc.DocumentElement.SelectNodes("/localizationDictionary/texts/text");
+            //        int i = 0;
+            //        foreach (XmlNode node in nodeList)
+            //        {
+            //            XmlLanguageModel xlm = new XmlLanguageModel();
+            //            xlm.ID = i;
+            //            xlm.Name = node.Attributes.GetNamedItem("name").InnerText;
+            //            xlm.Text = node.InnerText;
+            //            IxmlGlobal.Add(xlm);
+            //        }
+            //    }
+            //    OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            //    if (openFileDialog1.ShowDialog() == true)
+            //    {
+            //        XmlDocument xmlDoc1 = new XmlDocument();
+            //        xmlDoc1.Load(openFileDialog1.FileName);
+            //        fileNameSec = openFileDialog1.FileName;
+            //        var cultureSec = xmlDoc1.DocumentElement.SelectNodes("/localizationDictionary")[0].Attributes.GetNamedItem("culture").InnerText;
+            //        txtSecond.Text = cultureSec.ToString();
+            //        XmlNodeList nodeList1 = xmlDoc1.DocumentElement.SelectNodes("/localizationDictionary/texts/text");
+            //        /*xmlGlobal = new XmlLanguageModel[nodeList.Count]0;*/
+            //        int i1 = 0;
+            //        foreach (XmlNode node in nodeList1)
+            //        {
+            //            XmlLanguageModel xlm = new XmlLanguageModel();
+            //            xlm.ID = i1;
+            //            xlm.Name = node.Attributes.GetNamedItem("name").InnerText;
+            //            xlm.Text = node.InnerText;
+            //            IxmlSecond.Add(xlm);
+            //        }
+            //    }
+            //    List<XmlLanguageModel> SortedGlobal = IxmlGlobal.OrderBy(o => o.Name).ToList();
+            //    List<XmlLanguageModel> SortedSecond = IxmlSecond.OrderBy(o => o.Name).ToList();
+            //    List<XmlLanguageModel> DoseNotInGlobal = new List<XmlLanguageModel>();
+            //    List<XmlLanguageModel> DoseNotInSecend = new List<XmlLanguageModel>();
+            //    List<XmlLanguageModel> Repeated = new List<XmlLanguageModel>();
 
 
-                #region trash
+            //    #region trash
 
-                //for (int i1 = 0; i1 < ((SortedGlobal.Count > SortedSecond.Count)? SortedGlobal.Count:SortedSecond.Count); i1++)
-                //{
-                //    if ((SortedGlobal.Count > i1) &&(!SortedSecond.Any(e => e.Name == SortedGlobal[i1].Name)))
-                //    {
-                //        SortedSecond.Insert(i1 + 1, SortedGlobal[i1]);
-                //        DoseNotInSecend.Add(SortedGlobal[i1]);
-                //    }
-                //    if ((SortedSecond.Count > i1) && (!SortedGlobal.Any(e => e.Name == SortedSecond[i1].Name)))
-                //    {
-                //        SortedGlobal.Insert(i1 + 1, SortedSecond[i1]);
-                //        DoseNotInGlobal.Add(SortedSecond[i1]);
-                //    }
-                //}
-                #endregion
+            //    //for (int i1 = 0; i1 < ((SortedGlobal.Count > SortedSecond.Count)? SortedGlobal.Count:SortedSecond.Count); i1++)
+            //    //{
+            //    //    if ((SortedGlobal.Count > i1) &&(!SortedSecond.Any(e => e.Name == SortedGlobal[i1].Name)))
+            //    //    {
+            //    //        SortedSecond.Insert(i1 + 1, SortedGlobal[i1]);
+            //    //        DoseNotInSecend.Add(SortedGlobal[i1]);
+            //    //    }
+            //    //    if ((SortedSecond.Count > i1) && (!SortedGlobal.Any(e => e.Name == SortedSecond[i1].Name)))
+            //    //    {
+            //    //        SortedGlobal.Insert(i1 + 1, SortedSecond[i1]);
+            //    //        DoseNotInGlobal.Add(SortedSecond[i1]);
+            //    //    }
+            //    //}
+            //    #endregion
 
-                for (int i1 = 0; i1 < SortedGlobal.Count; i1++)
-                {
-                    if (!SortedSecond.Any(e => e.Name == SortedGlobal[i1].Name))
-                    {
-                        SortedSecond.Insert(i1 + 1, SortedGlobal[i1]);
-                        DoseNotInSecend.Add(SortedGlobal[i1]);
-                    }
-                }
-                for (int i1 = 0; i1 < SortedSecond.Count; i1++)
-                {
-                    if (!SortedGlobal.Any(e => e.Name == SortedSecond[i1].Name))
-                    {
-                        SortedGlobal.Insert(i1 + 1, SortedSecond[i1]);
-                        DoseNotInGlobal.Add(SortedSecond[i1]);
-                    }
-                }
+            //    for (int i1 = 0; i1 < SortedGlobal.Count; i1++)
+            //    {
+            //        if (!SortedSecond.Any(e => e.Name == SortedGlobal[i1].Name))
+            //        {
+            //            SortedSecond.Insert(i1 + 1, SortedGlobal[i1]);
+            //            DoseNotInSecend.Add(SortedGlobal[i1]);
+            //        }
+            //    }
+            //    for (int i1 = 0; i1 < SortedSecond.Count; i1++)
+            //    {
+            //        if (!SortedGlobal.Any(e => e.Name == SortedSecond[i1].Name))
+            //        {
+            //            SortedGlobal.Insert(i1 + 1, SortedSecond[i1]);
+            //            DoseNotInGlobal.Add(SortedSecond[i1]);
+            //        }
+            //    }
 
 
-                if (SortedGlobal.Count > SortedSecond.Count)
-                {
-                    for (int i = 0; i < SortedGlobal.Count; i++)
-                    {
-                        XmlLanguageViewModel xlm = new XmlLanguageViewModel();
-                        xlm.ID = i;
-                        xlm.Name = SortedGlobal[i].Name;
-                        xlm.Text = SortedGlobal[i].Text;
-                        xlm.GlobalID = SortedGlobal[i].ID;
-                        xlm.GlobalText = SortedGlobal[i].Text;
-                        xlvm.Add(xlm);
-                    }
-                    for (int i1 = 0; i1 < SortedSecond.Count; i1++)
-                    {
-                        xlvm.Where(w => w.Name == SortedSecond[i1].Name)
-                            .ToList()
-                            .ForEach(e => e.SecondID = SortedSecond[i1].ID);
-                        xlvm.Where(w => w.Name == SortedSecond[i1].Name)
-                            .ToList()
-                            .ForEach(e => e.SecondText = SortedSecond[i1].Text);
-                    }
-                }
-                else
-                {
-                    for (int i = 0; i < SortedSecond.Count; i++)
-                    {
-                        XmlLanguageViewModel xlm = new XmlLanguageViewModel();
-                        xlm.ID = i;
-                        xlm.Name = SortedSecond[i].Name;
-                        xlm.Text = SortedSecond[i].Text;
-                        xlm.SecondID = SortedSecond[i].ID;
-                        xlm.SecondText = SortedSecond[i].Text;
-                        xlvm.Add(xlm);
-                    }
-                    for (int i1 = 0; i1 < SortedGlobal.Count; i1++)
-                    {
-                        xlvm.Where(w => w.Name == SortedGlobal[i1].Name)
-                            .ToList()
-                            .ForEach(e => e.GlobalID = SortedGlobal[i1].ID);
-                        xlvm.Where(w => w.Name == SortedGlobal[i1].Name)
-                            .ToList()
-                            .ForEach(e => e.GlobalText = SortedGlobal[i1].Text);
-                    }
-                }
-                DataGrid_BinDefinition.ItemsSource = xlvm;
-                ButtonSaveFile.IsEnabled = true;
-            }
+            //    if (SortedGlobal.Count > SortedSecond.Count)
+            //    {
+            //        for (int i = 0; i < SortedGlobal.Count; i++)
+            //        {
+            //            XmlLanguageViewModel xlm = new XmlLanguageViewModel();
+            //            xlm.ID = i;
+            //            xlm.Name = SortedGlobal[i].Name;
+            //            xlm.Text = SortedGlobal[i].Text;
+            //            xlm.GlobalID = SortedGlobal[i].ID;
+            //            xlm.GlobalText = SortedGlobal[i].Text;
+            //            xlvm.Add(xlm);
+            //        }
+            //        for (int i1 = 0; i1 < SortedSecond.Count; i1++)
+            //        {
+            //            xlvm.Where(w => w.Name == SortedSecond[i1].Name)
+            //                .ToList()
+            //                .ForEach(e => e.SecondID = SortedSecond[i1].ID);
+            //            xlvm.Where(w => w.Name == SortedSecond[i1].Name)
+            //                .ToList()
+            //                .ForEach(e => e.SecondText = SortedSecond[i1].Text);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        for (int i = 0; i < SortedSecond.Count; i++)
+            //        {
+            //            XmlLanguageViewModel xlm = new XmlLanguageViewModel();
+            //            xlm.ID = i;
+            //            xlm.Name = SortedSecond[i].Name;
+            //            xlm.Text = SortedSecond[i].Text;
+            //            xlm.SecondID = SortedSecond[i].ID;
+            //            xlm.SecondText = SortedSecond[i].Text;
+            //            xlvm.Add(xlm);
+            //        }
+            //        for (int i1 = 0; i1 < SortedGlobal.Count; i1++)
+            //        {
+            //            xlvm.Where(w => w.Name == SortedGlobal[i1].Name)
+            //                .ToList()
+            //                .ForEach(e => e.GlobalID = SortedGlobal[i1].ID);
+            //            xlvm.Where(w => w.Name == SortedGlobal[i1].Name)
+            //                .ToList()
+            //                .ForEach(e => e.GlobalText = SortedGlobal[i1].Text);
+            //        }
+            //    }
+            //    DataGrid_BinDefinition.ItemsSource = xlvm;
+            //    ButtonSaveFile.IsEnabled = true;
+            //}
         }
 
         public string Name { get; set; }
@@ -212,85 +214,149 @@ namespace XmlSync
 
         private void ButtonSaveFile_Click(object sender, RoutedEventArgs e)
         {
-            List<string> linesMain = new List<string>();
-            List<string> linesSec = new List<string>();
-            linesMain.Add("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-            linesMain.Add("<localizationDictionary culture=\"" + txtMain.Text+ "\">");
-            linesMain.Add("\t<texts>");
-              
+            //List<string> linesMain = new List<string>();
+            //List<string> linesSec = new List<string>();
+            //linesMain.Add("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+            //linesMain.Add("<localizationDictionary culture=\"" + txtMain.Text + "\">");
+            //linesMain.Add("\t<texts>");
 
-            linesSec.Add("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-            linesSec.Add("<localizationDictionary culture=\"" + txtSecond.Text + "\">");
-            linesSec.Add("\t<texts>");
-            List<XmlLanguageModel> IxmlGlobal = new List<XmlLanguageModel>();
-            List<XmlLanguageModel> IxmlSecond = new List<XmlLanguageModel>();
-            foreach (var item in xlvm)
+
+            //linesSec.Add("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+            //linesSec.Add("<localizationDictionary culture=\"" + txtSecond.Text + "\">");
+            //linesSec.Add("\t<texts>");
+            //List<XmlLanguageModel> IxmlGlobal = new List<XmlLanguageModel>();
+            //List<XmlLanguageModel> IxmlSecond = new List<XmlLanguageModel>();
+            //foreach (var item in xlvm)
+            //{
+            //    {
+            //        XmlLanguageModel xlm = new XmlLanguageModel();
+            //        xlm.ID = item.GlobalID;
+            //        xlm.Name = item.Name;
+            //        xlm.Text = item.GlobalText;
+            //        if (xlm.Text.Contains("&"))
+            //        {
+            //            xlm.Text = xlm.Text.Replace("&", "&amp;");
+            //        }
+            //        if (xlm.Text.Contains("<"))
+            //        {
+            //            xlm.Text = xlm.Text.Replace("<", "&lt;");
+            //        }
+            //        if (xlm.Text.Contains(">"))
+            //        {
+            //            xlm.Text = xlm.Text.Replace(">", "&gt;");
+
+            //        }
+            //        IxmlGlobal.Add(xlm);
+            //    }
+            //    {
+            //        XmlLanguageModel xlm = new XmlLanguageModel();
+            //        xlm.ID = item.SecondID;
+            //        xlm.Name = item.Name;
+            //        xlm.Text = item.SecondText;
+            //        if (xlm.Text.Contains("&"))
+            //        {
+            //            xlm.Text = xlm.Text.Replace("&", "&amp;");
+            //        }
+            //        if (xlm.Text.Contains("<"))
+            //        {
+            //            xlm.Text = xlm.Text.Replace("<", "&lt;");
+            //        }
+            //        if (xlm.Text.Contains(">"))
+            //        {
+            //            xlm.Text = xlm.Text.Replace(">", "&gt;");
+
+            //        }
+            //        IxmlSecond.Add(xlm);
+            //    }
+            //}
+            //IxmlGlobal = IxmlGlobal.OrderBy(o => o.ID).ToList();
+            //IxmlSecond = IxmlSecond.OrderBy(o => o.ID).ToList();
+
+            //for (int i = 0; i < xlvm.Count; i++)
+            //{
+            //    linesMain.Add("\t\t<text name=\"" + IxmlGlobal[i].Name + "\">" + IxmlGlobal[i].Text + "</text>");
+            //    linesSec.Add("\t\t<text name=\"" + IxmlSecond[i].Name + "\">" + IxmlSecond[i].Text + "</text>");
+            //}
+            //linesMain.Add("\t</texts>");
+            //linesMain.Add("</localizationDictionary>");
+            //linesSec.Add("\t</texts>");
+            //linesSec.Add("</localizationDictionary>");
+            //using (StreamWriter sw = new StreamWriter(fileNameMain))
+            //{
+            //    foreach (var x in linesMain)
+            //        sw.WriteLine(x);
+            //    //sw.Write(linesMain.ToArray<string>().ToString());
+            //}
+            //using (StreamWriter sw = new StreamWriter(fileNameSec))
+            //{
+            //    foreach (var x in linesSec)
+            //        sw.WriteLine(x);
+            //    //sw.Write(linesSec.ToArray<string>().ToString());
+            //}
+        }
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            Button btnRemove = (Button)sender;
+            int count = Grid.GetRow(btnRemove);
+            TextBox txtLabel = (TextBox)FindName("txtLabel" + count);
+            TextBox txtPath = (TextBox)FindName("txtPath" + count);
+            Button btnAdd = (Button)FindName("btnAdd" + count);
+            btnAdd.Visibility = Visibility.Visible;
+            txtPath.Visibility = Visibility.Hidden;
+            btnRemove.Visibility = Visibility.Hidden;
+
+        }
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Button btnAdd = (Button)sender;
+            int count = Grid.GetRow(btnAdd);
+
+            TextBox txtLabel = (TextBox)FindName("txtLabel" + count);
+            TextBox txtPath = (TextBox)FindName("txtPath" + count);
+            Button btnRemove = (Button)FindName("txtRemove" + count);
+            if (!txtLabel.Text.Equals(""))
             {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "XML Files|*.xml";
+                openFileDialog.Title = "Please Add Language";
+                openFileDialog.Multiselect = false;
+                if (openFileDialog.ShowDialog() == true && openFileDialog.CheckFileExists)
                 {
-                    XmlLanguageModel xlm = new XmlLanguageModel();
-                    xlm.ID = item.GlobalID;
-                    xlm.Name = item.Name;
-                    xlm.Text = item.GlobalText;
-                    if (xlm.Text.Contains("&"))
+                    Languages temp = new Languages();
+                    temp.fileID = lans.Count;
+                    temp.fileName = openFileDialog.SafeFileName;
+                    temp.filePath = openFileDialog.FileName;
+                    temp.lanID = lans.Count;
+                    temp.lanLabel = txtLabel.Text;
+                    XmlDocument xmlDoc = new XmlDocument();
+                    xmlDoc.Load(temp.filePath);
+                    var culture = xmlDoc.DocumentElement.SelectNodes("/localizationDictionary")[0].Attributes.GetNamedItem("culture").InnerText;
+                    txtPath.Text = culture.ToString();
+                    XmlNodeList nodeList = xmlDoc.DocumentElement.SelectNodes("/localizationDictionary/texts/text");
+                    int i = 0;
+                    foreach (XmlNode node in nodeList)
                     {
-                        xlm.Text = xlm.Text.Replace("&", "&amp;");
+                        XmlLanguageModel xlm = new XmlLanguageModel();
+                        xlm.ID = i++;
+                        xlm.Name = node.Attributes.GetNamedItem("name").InnerText;
+                        xlm.Text = node.InnerText;
+                        temp.InsertModel(xlm);
                     }
-                    if (xlm.Text.Contains("<"))
-                    {
-                        xlm.Text = xlm.Text.Replace("<", "&lt;");
-                    }
-                    if (xlm.Text.Contains(">"))
-                    {
-                        xlm.Text = xlm.Text.Replace(">", "&gt;");
-
-                    }
-                    IxmlGlobal.Add(xlm);
-                }
-                {
-                    XmlLanguageModel xlm = new XmlLanguageModel();
-                    xlm.ID = item.SecondID;
-                    xlm.Name = item.Name;
-                    xlm.Text = item.SecondText;
-                    if (xlm.Text.Contains("&"))
-                    {
-                        xlm.Text = xlm.Text.Replace("&", "&amp;");
-                    }
-                    if (xlm.Text.Contains("<"))
-                    {
-                        xlm.Text = xlm.Text.Replace("<", "&lt;");
-                    }
-                    if (xlm.Text.Contains(">"))
-                    {
-                        xlm.Text = xlm.Text.Replace(">", "&gt;");
-
-                    }
-                    IxmlSecond.Add(xlm);
+                    lans.Add(temp);
+                    btnAdd.Visibility = Visibility.Hidden;
+                    txtPath.Visibility = Visibility.Visible;
+                    //btnRemove.Visibility = Visibility.Visible;
                 }
             }
-            IxmlGlobal = IxmlGlobal.OrderBy(o => o.ID).ToList();
-            IxmlSecond = IxmlSecond.OrderBy(o => o.ID).ToList();
+            else
+            {
+                MessageBox.Show("Please define a name for this Language");
+            }
+        }
 
-            for (int i = 0; i < xlvm.Count; i++)
-            {
-                linesMain.Add("\t\t<text name=\""+IxmlGlobal[i].Name +"\">"+IxmlGlobal[i].Text+ "</text>");
-                linesSec.Add("\t\t<text name=\"" + IxmlSecond[i].Name + "\">" + IxmlSecond[i].Text + "</text>");
-            }
-            linesMain.Add("\t</texts>");
-            linesMain.Add("</localizationDictionary>");
-            linesSec.Add("\t</texts>");
-            linesSec.Add("</localizationDictionary>");
-            using (StreamWriter sw = new StreamWriter(fileNameMain))
-            {
-                foreach (var x in linesMain)
-                    sw.WriteLine(x);
-                //sw.Write(linesMain.ToArray<string>().ToString());
-            }
-            using (StreamWriter sw = new StreamWriter(fileNameSec))
-            {
-                foreach (var x in linesSec)
-                    sw.WriteLine(x);
-                //sw.Write(linesSec.ToArray<string>().ToString());
-            }
+        private void btnLoadFile_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

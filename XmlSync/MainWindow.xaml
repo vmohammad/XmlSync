@@ -21,10 +21,31 @@
             </Grid.ColumnDefinitions>
             <!--<TextBlock Grid.Row="0" Grid.Column="0" Text="Eqpt ID"/>
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Equip Opn"/>-->
-            <TextBox IsEnabled="False" Grid.Row="0" Grid.Column="0" Text="Main"/>
-            <TextBox IsEnabled="False" Grid.Row="1" Grid.Column="0" Text="Second"/>
-            <TextBox x:Name="txtMain" Grid.Row="0" Grid.Column="1" IsReadOnly="True" />
-            <TextBox x:Name="txtSecond" Grid.Row="1" Grid.Column="1" IsReadOnly="True" />
+            <Grid Background="White" Grid.Row="0" Grid.ColumnSpan="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.25*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Row="0" Grid.Column="0" Text="0" IsEnabled="False"/>
+                <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtLabel0" />
+                <Button  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Visibility="Visible" x:Name="btnAdd0" Content="Add Main Language" Click="btnAdd_Click" IsEnabled="True" />
+                <TextBox Grid.Row="0" Grid.Column="2" Visibility="Hidden" IsReadOnly="True"  x:Name="txtPath0" />
+                <Button  Grid.Row="0" Grid.Column="3" Visibility="Hidden" Content="Remove"  x:Name="btnRemove0" />
+                <TextBox Grid.Row="1" Grid.Column="0" Text="+" IsEnabled="False"/>
+                <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtAdd" />
+                <Button  Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Visibility="Visible" x:Name="btnAdd" Content="Add Another Language" Click="btnAdd_Click" IsEnabled="True" />
+                <TextBox Grid.Row="1" Grid.Column="2" Visibility="Hidden" IsReadOnly="True"  x:Name="txtAdded" />
+                <Button  Grid.Row="1" Grid.Column="3" Visibility="Hidden" Content="Remove"  x:Name="Remove1" />
+            </Grid>
             <!--<TextBox Grid.Row="0" Grid.Column="1" IsReadOnly="True" Text="{Binding EqptID}"/>
             <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" Text="{Binding EquipOpn}"/>-->
 
@@ -47,8 +68,10 @@
                     <DataGridTextColumn Visibility="Hidden" MinWidth="300" Header="Text Global" Binding="{Binding SecondID}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button IsEnabled="False" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="1" x:Name="ButtonSaveFile" Content="Save Files" Click="ButtonSaveFile_Click"/>
-            <Button Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="1" x:Name="ButtonReadFile" Content="Read Files" Click="ButtonReadFile_Click"/>
+            <Button IsEnabled="False" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="1" x:Name="ButtonSaveFile" Content="Save Files" Click="ButtonSaveFile_Click"/>
+            <Button Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="1" x:Name="ButtonReadFile" Content="Read Files" Click="ButtonReadFile_Click" Visibility="Hidden"/>
+            <Button Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="1" x:Name="btnLoadFile" Content="Load Files" Click="btnLoadFile_Click"/>
+
 
         </Grid>
     </Grid>
