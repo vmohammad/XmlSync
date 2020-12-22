@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "O:\\_Kamrad\\myGit\\XmlSync\\XmlSync\\XmlSync.csproj": {}
+    "D:\\Asp.Net\\_Kamrad\\XmlSync\\XmlSync\\XmlSync.csproj": {}
   },
   "projects": {
-    "O:\\_Kamrad\\myGit\\XmlSync\\XmlSync\\XmlSync.csproj": {
+    "D:\\Asp.Net\\_Kamrad\\XmlSync\\XmlSync\\XmlSync.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "O:\\_Kamrad\\myGit\\XmlSync\\XmlSync\\XmlSync.csproj",
+        "projectUniqueName": "D:\\Asp.Net\\_Kamrad\\XmlSync\\XmlSync\\XmlSync.csproj",
         "projectName": "XmlSync",
-        "projectPath": "O:\\_Kamrad\\myGit\\XmlSync\\XmlSync\\XmlSync.csproj",
-        "packagesPath": "C:\\Users\\vmoha\\.nuget\\packages\\",
-        "outputPath": "O:\\_Kamrad\\myGit\\XmlSync\\XmlSync\\obj\\",
+        "projectPath": "D:\\Asp.Net\\_Kamrad\\XmlSync\\XmlSync\\XmlSync.csproj",
+        "packagesPath": "C:\\Users\\Company\\.nuget\\packages\\",
+        "outputPath": "D:\\Asp.Net\\_Kamrad\\XmlSync\\XmlSync\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "c:\\program files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\vmoha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Company\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,7 +58,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

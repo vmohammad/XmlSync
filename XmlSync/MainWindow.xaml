@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="1000">
     <Grid>
-        <Grid Background="White">
+        <Grid Background="White" x:Name="GridMain">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -21,13 +21,18 @@
             </Grid.ColumnDefinitions>
             <!--<TextBlock Grid.Row="0" Grid.Column="0" Text="Eqpt ID"/>
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Equip Opn"/>-->
-            <Grid Background="White" Grid.Row="0" Grid.ColumnSpan="10">
+            <!--<StackPanel Grid.Row="0" Grid.ColumnSpan="10" >
+                <StackPanel Orientation="Horizontal" x:Name="sp0">
+                    <TextBox Padding="0 0 5 0" Text="0" IsEnabled="False"/>
+                    <TextBox Padding="0 0 100 0" x:Name="txtLabel0" />
+                    <Button  Padding="0 0 795 0" Visibility="Visible" x:Name="btnAdd0" Content="Add Language" Click="btnAdd_Click" IsEnabled="True" />
+                    <TextBox Padding="0 0 795 0" Visibility="Hidden" IsReadOnly="True"  x:Name="txtPath0" />
+                    <Button  Padding="0 0 50 0" Visibility="Hidden" Content="Remove"  x:Name="btnRemove0" />
+                </StackPanel>
+            </StackPanel>-->
+            <Grid x:Name="GridTop" Background="White" Grid.Row="0" Grid.ColumnSpan="10">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto" Name="row0"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.25*"/>
@@ -35,21 +40,21 @@
                     <ColumnDefinition Width="8*"/>
                     <ColumnDefinition Width="0.5*"/>
                 </Grid.ColumnDefinitions>
-                <TextBox Grid.Row="0" Grid.Column="0" Text="0" IsEnabled="False"/>
+                <TextBox Grid.Row="0" Grid.Column="0" Text="0" x:Name="txtCount" IsEnabled="False"/>
                 <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtLabel0" />
                 <Button  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Visibility="Visible" x:Name="btnAdd0" Content="Add Main Language" Click="btnAdd_Click" IsEnabled="True" />
                 <TextBox Grid.Row="0" Grid.Column="2" Visibility="Hidden" IsReadOnly="True"  x:Name="txtPath0" />
                 <Button  Grid.Row="0" Grid.Column="3" Visibility="Hidden" Content="Remove"  x:Name="btnRemove0" />
-                <TextBox Grid.Row="1" Grid.Column="0" Text="+" IsEnabled="False"/>
+                <!--<TextBox Grid.Row="1" Grid.Column="0" Text="+" IsEnabled="False"/>
                 <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtAdd" />
                 <Button  Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Visibility="Visible" x:Name="btnAdd" Content="Add Another Language" Click="btnAdd_Click" IsEnabled="True" />
                 <TextBox Grid.Row="1" Grid.Column="2" Visibility="Hidden" IsReadOnly="True"  x:Name="txtAdded" />
-                <Button  Grid.Row="1" Grid.Column="3" Visibility="Hidden" Content="Remove"  x:Name="Remove1" />
+                <Button  Grid.Row="1" Grid.Column="3" Visibility="Hidden" Content="Remove"  x:Name="Remove1" />-->
             </Grid>
             <!--<TextBox Grid.Row="0" Grid.Column="1" IsReadOnly="True" Text="{Binding EqptID}"/>
             <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" Text="{Binding EquipOpn}"/>-->
-
-            <DataGrid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="DataGrid_BinDefinition" 
+        
+            <!--<DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="dgLans" 
               AutoGenerateColumns="False"
               CanUserAddRows="False"
               CanUserDeleteRows="False"
@@ -67,10 +72,10 @@
                     <DataGridTextColumn Visibility="Hidden" MinWidth="500" Header="Text Persian" Binding="{Binding GlobalID}"/>
                     <DataGridTextColumn Visibility="Hidden" MinWidth="300" Header="Text Global" Binding="{Binding SecondID}"/>
                 </DataGrid.Columns>
-            </DataGrid>
-            <Button IsEnabled="False" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="1" x:Name="ButtonSaveFile" Content="Save Files" Click="ButtonSaveFile_Click"/>
-            <Button Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="1" x:Name="ButtonReadFile" Content="Read Files" Click="ButtonReadFile_Click" Visibility="Hidden"/>
-            <Button Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="1" x:Name="btnLoadFile" Content="Load Files" Click="btnLoadFile_Click"/>
+            </DataGrid>-->
+            <Button IsEnabled="False" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="1" x:Name="ButtonSaveFile" Content="Save Files" Click="ButtonSaveFile_Click"/>
+            <Button Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="1" x:Name="ButtonReadFile" Content="Read Files" Click="ButtonReadFile_Click" Visibility="Hidden"/>
+            <Button Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="1" x:Name="btnLoadFile" Content="Load Files" Click="btnLoadFile_Click"/>
 
 
         </Grid>

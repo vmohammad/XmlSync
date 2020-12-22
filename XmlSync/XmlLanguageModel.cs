@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace XmlSync
@@ -19,6 +20,13 @@ namespace XmlSync
         public int SecondID { get; set; }
         public string SecondText { get; set; }
     }
+    public class XmlMultiLanguageViewModel
+    {
+        public int ID { get; set; }
+        public int[] IDNames { get; set; }
+        public string[] Names { get; set; }
+        public string[] Texts { get; set; }
+    }
     public class Files
     {
         public int fileID { get; set; }
@@ -34,7 +42,7 @@ namespace XmlSync
         public int lanID { get; set; }
         public string lanLabel { get; set; }
         //public List<XmlLanguageModel> LanguageModel { get; set; }
-        private List<XmlLanguageModel> LanguageModel;
+        public List<XmlLanguageModel> LanguageModel;
         private bool isList { get; set; }
         private void CreateLanguageModel()
         {
@@ -48,6 +56,14 @@ namespace XmlSync
         {
             CreateLanguageModel();
             LanguageModel.Add(xmlLanguageModel);
+        }
+        public void SortModel()
+        {
+            LanguageModel = LanguageModel.OrderBy(o => o.Name).ToList();
+        }
+        public int LengthModel()
+        {
+            return LanguageModel.Count;
         }
         public List<XmlLanguageModel> GetModel()
         {
